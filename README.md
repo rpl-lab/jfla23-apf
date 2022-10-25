@@ -19,13 +19,13 @@ Les dépendances suivantes sont contenus dans les sous-modules de cet artefact :
 1. Cloner le dépôt et ses sous-modules :
 
 ```
-$ git clone --recurse-submodules https://github.com/rpl-lab/jfla22-zlax.git
+$ git clone --recurse-submodules https://github.com/rpl-lab/jfla23-apf.git
 ```
 
 2. Pour éviter de polluer votre environnement opam, nous recommandons d'utiliser un switch local avec la version 4.13.1 d'OCaml :
 
 ```
-$ opam swith create ./ 4.13.1
+$ opam switch create ./ 4.13.1
 ```
 
 3. Installer toutes les dépendances :
