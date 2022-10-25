@@ -87,3 +87,9 @@ $ more radar_apf.log
 
 Une fois que les deux fichiers de log sont générés,
 le notebook Python `plots.ipynb` permet de reproduire la Figure 2 pour visualiser les distributions obtenues pour `theta`.
+
+## Évaluation
+
+Les figures d'évaluation peuvent être regénérées avec la commande `make bench`. Elles se trouveront alors dans le dossier `probzelus/bench-apf/plots`, au format PDF.
+
+Avec un processeur Intel Core i5-6200U (2.30GHz), les figures mettent environ 35 minutes à être générées.
