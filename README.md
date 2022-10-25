@@ -90,6 +90,15 @@ le notebook Python `plots.ipynb` permet de reproduire la Figure 2 pour visualise
 
 ## Évaluation
 
-Les figures d'évaluation peuvent être regénérées en exécutant la commande `make bench` dans le dossier `probzelus/bench-apf`. Elles se trouveront alors dans le dossier `probzelus/bench-apf/plots`, au format PDF.
+Les figures d'évaluation peuvent être re-générées en exécutant la commande `make bench` dans le dossier `probzelus/bench-apf`. Elles se trouveront alors dans le dossier `probzelus/bench-apf/plots`, au format PDF.
 
-Avec un processeur Intel Core i5-6200U (2.30GHz), les figures mettent environ 35 minutes à être générées.
+```
+$ cd probzelus/bench-apf
+$ make bench
+$ ls plots
+coin-ess.pdf        radar-ess.pdf        sin-ess.pdf        split-ess.pdf
+coin-mse-theta.pdf  radar-mse-theta.pdf  sin-mse-theta.pdf  split-mse-theta.pdf
+kalman-mse-x.pdf    radar-mse-x.pdf      sin-mse-x.pdf      split-mse-x.pdf
+```
+
+Note : Avec un processeur Intel Core i5-6200U (2.30GHz), les figures mettent environ 35 minutes à être générées.
