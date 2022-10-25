@@ -26,6 +26,7 @@ exec_pf: radar_pf.ml main_pf.ml ## Launch the radar using PF
 clean: ## Clean
 	rm -f $(NAME).ml radar_apf.ml main_apf.ml radar_pf.ml main_pf.ml
 	rm -f *.zci
+	rm -f *.log
 	dune clean
 
 .phony: exec_apf exec_pf

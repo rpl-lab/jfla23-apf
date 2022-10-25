@@ -22,13 +22,13 @@ Les dépendances suivantes sont contenus dans les sous-modules de cet artefact :
 $ git clone --recurse-submodules https://github.com/rpl-lab/jfla22-zlax.git
 ```
 
-2. Pour éviter de polluer votre environnement opam, nous recommandons d'utiliser un switch local avec la version 4.13.1 d'ocaml :
+2. Pour éviter de polluer votre environnement opam, nous recommandons d'utiliser un switch local avec la version 4.13.1 d'OCaml :
 
 ```
 $ opam swith create ./ 4.13.1
 ```
 
-3. Installer toutes les dépendences :
+3. Installer toutes les dépendances :
 
 ```
 $ make init
@@ -42,15 +42,15 @@ Les deux versions sont quasiment identiques.
 Seul l'appel à l'opérateur `infer` est différent.
 
 ```
-$ diff radar_pf.zls radar_apf.zls 
+$ diff radar_apf.zls radar_pf.zls
 3c3
-< open Infer_pf
+< open Infer_apf_mm
 ---
-> open Infer_apf_mm
-59c59
-<     and d = infer 100000 radar (delta, alpha)
+> open Infer_pf
+38c38
+<     and d = infer { apf_particles=500; apf_mm_particles=200} radar (delta, alpha)
 ---
->     and d = infer { apf_particles=500; apf_mm_particles=200} radar (delta, alpha)
+>     and d = infer 100000 radar (delta, alpha)
 ```
 
 Un Makefile permet d'exécuter l'une ou l'autre version.
@@ -63,7 +63,7 @@ Usage:
   make clean               #  Clean
 ```
 
-Les commandes `make exec_apf` et `make exec_pf` exécutent le radar sur des données générées aléatoirement.
+Les commandes `make exec_apf` et `make exec_pf` exécutent le radar sur des données générées aléatoirement (les résultats peuvent donc varier d'une exécution à l'autre).
 À chaque instant, on affiche l'observation courante et la position estimé sur `stderr`.
 On utilise `stdout` pour sauvegarder dans les fichier `radar_apf.log` et `radar_pf.log` 1000 échantillons de la distribution de `theta` tous les 10 pas de temps.
 

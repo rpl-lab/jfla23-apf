@@ -4,31 +4,10 @@ open Infer_pf
 open Zelus_owl
 open Lib
 
-(** Constants *)
-let alpha_noise = 0.001
-let delta_noise = 0.001
-
-let speed = 0.5
-let ping_speed = 100.
-let x0 = vec [10.; 10.]
-
-let zeros = vec [0.; 0.]
-let ones = vec [10.; 10.]
-let i2 = diagm [1.0; 1.0]
-
-let eye v = diagm [v; v]
-
-
 (** Motion model *)
-(* proba move x0 = theta, x where
-    rec init theta = sample(mv_gaussian(zeros, i2))
-    and x = x0 -> sample(mv_gaussian(pre x +@ theta, eye speed)) *)
-
 proba move x0 = theta, x where
-  rec init theta_0 = sample(gaussian(0., 1.))
-  and init theta_1 = sample(gaussian(0., 1.))
-  and theta = vec [theta_0; theta_1]
-  and x = x0 -> sample(mv_gaussian(pre x +@ theta, speed *@ i2))
+    rec init theta = sample(mv_gaussian(zeros, i2))
+    and x = x0 -> sample(mv_gaussian(pre x +@ theta, speed *@ i2))
 
 (** Radar model *)
 proba radar (delta, alpha) = theta, x where   
