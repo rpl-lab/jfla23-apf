@@ -11,10 +11,6 @@ Les prérequis pour l'installation de l'artefact sont :
 - [openblas](https://github.com/xianyi/OpenBLAS) (requis pour Owl)
 - [pip](https://pypi.org/project/pip/) avec la version 3.9 (ou plus récente) de Python (pour générer certaines figures)
 
-Les dépendances suivantes sont contenus dans les sous-modules de cet artefact :
-- [Zelus](https://github.com/rpl-lab/zelus/tree/apf) (branche apf)
-- [ProbZelus](https://github.com/rpl-lab/probzelus/tree/apf)
-
 
 1. Cloner le dépôt et ses sous-modules :
 
