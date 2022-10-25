@@ -1,4 +1,6 @@
 *.zci
+main.ml
+main_*.ml
 radar_*.ml
 radar_*.log
 _build
