@@ -1,0 +1,6 @@
+[submodule "zelus"]
+	path = zelus
+	url = git@github.com:rpl-lab/zelus.git
+[submodule "probzelus"]
+	path = probzelus
+	url = git@github.com:rpl-lab/probzelus.git
