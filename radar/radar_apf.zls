@@ -1,0 +1,71 @@
+open Probzelus
+open Distribution
+open Infer_apf_mm
+open Zelus_owl
+open Lib
+
+(** Constants *)
+let alpha_noise = 0.001
+let delta_noise = 0.001
+
+let speed = 0.5
+let ping_speed = 100.
+let x0 = vec [10.; 10.]
+
+let zeros = vec [0.; 0.]
+let ones = vec [10.; 10.]
+let i2 = diagm [1.0; 1.0]
+
+let eye v = diagm [v; v]
+
+
+(** Motion model *)
+(* proba move x0 = theta, x where
+    rec init theta = sample(mv_gaussian(zeros, i2))
+    and x = x0 -> sample(mv_gaussian(pre x +@ theta, eye speed)) *)
+
+proba move x0 = theta, x where
+  rec init theta_0 = sample(gaussian(0., 1.))
+  and init theta_1 = sample(gaussian(0., 1.))
+  and theta = vec [theta_0; theta_1]
+  and x = x0 -> sample(mv_gaussian(pre x +@ theta, speed *@ i2))
+
+(** Radar model *)
+proba radar (delta, alpha) = theta, x where   
+  rec theta, x = move x0
+  and d = sqrt((vec_get x 0) ** 2. +. (vec_get x 1) ** 2.)
+  and () = observe(gaussian((d *. 2.) /. ping_speed, delta_noise), delta)
+  and a = atan(vec_get x 1 /. vec_get x 0)
+  and () = observe(gaussian(a, alpha_noise), alpha)
+
+(** Generate random observations to test the radar. *)
+node gen (theta) = x, (delta, alpha) where   
+  rec x = x0 -> draw(mv_gaussian(pre x +@ theta, speed *@ i2))
+  and d = sqrt((vec_get x 0) ** 2. +. (vec_get x 1) ** 2.)
+  and delta = draw(gaussian((d *. 2.) /. ping_speed, delta_noise))
+  and a = atan(vec_get x 1 /. vec_get x 0)
+  and alpha = draw(gaussian(a, alpha_noise))
+
+
+(* Helper function to print a distribution in R^2 *)
+let print_pair t = 
+    "(" ^ (string_of_float (vec_get t 0)) ^ "," ^ (string_of_float (vec_get t 1)) ^ ")"
+
+node main () = () where
+    rec i = 0 fby (i + 1)
+    (* Generate data *)
+    and xtrue, (delta, alpha) = gen (vec [0.12; 0.25])
+    (* Launch the inference *)
+    and d = infer { apf_particles=500; apf_mm_particles=200} radar (delta, alpha)
+    and d_theta, d_x = split d
+    and mx = mean_matrix d_x
+    (* Dump 1000 samples from d_theta in stdout every 10 steps *)
+    and () = present (i mod 10 = 0) -> 
+            print_endline (string_of_list print_pair (extract_samples 1000 d_theta))
+        else ()
+    (* Dump current observation and estimated position in stderr *)
+    and () = Format.eprintf 
+        "%d obs: (%f, %f) X: (%f, %f)@." 
+        i 
+        (vec_get xtrue 0) (vec_get xtrue 1) 
+        (vec_get mx 0) (vec_get mx 1)
