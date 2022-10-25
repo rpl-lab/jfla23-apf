@@ -90,6 +90,6 @@ le notebook Python `plots.ipynb` permet de reproduire la Figure 2 pour visualise
 
 ## Évaluation
 
-Les figures d'évaluation peuvent être regénérées avec la commande `make bench`. Elles se trouveront alors dans le dossier `probzelus/bench-apf/plots`, au format PDF.
+Les figures d'évaluation peuvent être regénérées en exécutant la commande `make bench` dans le dossier `probzelus/bench-apf`. Elles se trouveront alors dans le dossier `probzelus/bench-apf/plots`, au format PDF.
 
 Avec un processeur Intel Core i5-6200U (2.30GHz), les figures mettent environ 35 minutes à être générées.
