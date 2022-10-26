@@ -87,6 +87,32 @@ $ more radar_apf.log
 
 Une fois que les deux fichiers de log sont générés, le notebook Python `plots.ipynb` permet de reproduire la Figure 2 pour visualiser les distributions obtenues pour `theta`.
 
+## Implémentation
+
+### Analyse Statique (`zelus/compiler/rewrite`)
+
+`apf_cst.ml` associe à une expression l'ensemble des variables constantes qu'elle définit.
+
+`apf_proba.ml` associe à une expression tirant une variable aléatoire la distribution qu'elle échantillonne.
+
+`apf_lift.ml` contrôle si une expression est constante et ne dépend pas de variables locales.
+
+### Compilation (`zelus/compiler/rewrite`)
+
+`apf_infer.ml` compile les appels à `infer`.
+
+`apf_call.ml` compile les appels de nœud.
+
+`apf_sample.ml` lance l'analyse statique, supprime les équations introduisant des paramètres constants et les rajoute en argument du nœud.
+
+### Assumed Parameter Filter (`probzelus/probzelus/inference`)
+
+`infer_apf.ml` est l'implémentation modulaire d'APF.
+
+`infer_apf_mm.ml` spécialise l'implémentation modulaire en utilisant la méthode de correspondance des moments.
+
+`infer_apf_is.ml` spécialise l'implémentation modulaire en utilisant l'échantillonnage préférentiel.
+
 ## Évaluation
 
 Les figures d'évaluation peuvent être re-générées en exécutant la commande `make bench` dans le dossier `probzelus/bench-apf`. 
