@@ -89,7 +89,7 @@ Une fois que les deux fichiers de log sont générés, le notebook Python `plots
 
 ## Implémentation
 
-### Analyse Statique ([`zelus/compiler/rewrite`](https://github.com/rpl-lab/zelus/tree/8e852daab03caae9c29020331b8c0b22d3842203/compiler/rewrite))
+#### Analyse Statique ([`zelus/compiler/rewrite`](https://github.com/rpl-lab/zelus/tree/8e852daab03caae9c29020331b8c0b22d3842203/compiler/rewrite))
 
 [`apf_cst.ml`](https://github.com/rpl-lab/zelus/blob/8e852daab03caae9c29020331b8c0b22d3842203/compiler/rewrite/apf_cst.ml) associe à une expression l'ensemble des variables constantes qu'elle définit.
 
@@ -97,7 +97,7 @@ Une fois que les deux fichiers de log sont générés, le notebook Python `plots
 
 [`apf_lift.ml`](https://github.com/rpl-lab/zelus/blob/8e852daab03caae9c29020331b8c0b22d3842203/compiler/rewrite/apf_lift.ml) contrôle si une expression est constante et ne dépend pas de variables locales.
 
-### Compilation ([`zelus/compiler/rewrite`](https://github.com/rpl-lab/zelus/tree/8e852daab03caae9c29020331b8c0b22d3842203/compiler/rewrite))
+#### Compilation ([`zelus/compiler/rewrite`](https://github.com/rpl-lab/zelus/tree/8e852daab03caae9c29020331b8c0b22d3842203/compiler/rewrite))
 
 [`apf_infer.ml`](https://github.com/rpl-lab/zelus/blob/8e852daab03caae9c29020331b8c0b22d3842203/compiler/rewrite/apf_infer.ml) compile les appels à `infer`.
 
@@ -105,7 +105,7 @@ Une fois que les deux fichiers de log sont générés, le notebook Python `plots
 
 [`apf_sample.ml`](https://github.com/rpl-lab/zelus/blob/8e852daab03caae9c29020331b8c0b22d3842203/compiler/rewrite/apf_sample.ml) lance l'analyse statique, supprime les équations introduisant des paramètres constants et les rajoute en argument du nœud.
 
-### Assumed Parameter Filter ([`probzelus/probzelus/inference`](https://github.com/rpl-lab/probzelus/tree/e056be0ad5a6e1283ddd9189513364fa2a60d465/probzelus/inference))
+#### Assumed Parameter Filter ([`probzelus/probzelus/inference`](https://github.com/rpl-lab/probzelus/tree/e056be0ad5a6e1283ddd9189513364fa2a60d465/probzelus/inference))
 
 [`infer_apf.ml`](https://github.com/rpl-lab/probzelus/blob/e056be0ad5a6e1283ddd9189513364fa2a60d465/probzelus/inference/infer_apf.ml) est l'implémentation modulaire d'APF.
 
