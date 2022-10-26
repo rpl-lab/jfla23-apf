@@ -18,9 +18,10 @@ Les prérequis pour l'installation de l'artefact sont :
 $ git clone --recurse-submodules https://github.com/rpl-lab/jfla23-apf.git
 ```
 
-2. Pour éviter de polluer votre environnement opam, nous recommandons d'utiliser un switch local avec la version 4.13.1 d'OCaml :
+2. Pour éviter de polluer votre environnement opam, nous recommandons d'utiliser un switch local avec la version 4.13.1 d'OCaml dans le répertoire du projet :
 
 ```
+$ cd jfla23-apf
 $ opam switch create ./ 4.13.1
 ```
 
