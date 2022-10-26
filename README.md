@@ -9,7 +9,7 @@ _G. Baudart, G. Bussone, L. Mandel, C. Tasson_
 Les prérequis pour l'installation de l'artefact sont :
 - [opam](http://opam.ocaml.org/) avec la version 4.13.1 d'OCaml
 - [openblas](https://github.com/xianyi/OpenBLAS) (requis pour Owl)
-- [pip](https://pypi.org/project/pip/) avec la version 3.9 (ou plus récente) de Python (pour générer certaines figures)
+- [jupyter notebook](https://jupyter.org/) (pour générer certaines figures)
 
 
 1. Cloner le dépôt et ses sous-modules :
@@ -60,8 +60,8 @@ Usage:
 ```
 
 Les commandes `make exec_apf` et `make exec_pf` exécutent le radar sur des données générées aléatoirement (les résultats peuvent donc varier d'une exécution à l'autre).
-À chaque instant, on affiche l'observation courante et la position estimé sur `stderr`.
-On utilise `stdout` pour sauvegarder dans les fichier `radar_apf.log` et `radar_pf.log` 1000 échantillons de la distribution de `theta` tous les 10 pas de temps.
+À chaque instant, on affiche l'observation courante et la position estimée sur `stderr`.
+On utilise `stdout` pour sauvegarder dans les fichiers `radar_apf.log` et `radar_pf.log` 1000 échantillons de la distribution de `theta` tous les 10 pas de temps.
 
 ```
 $ make exec_apf
@@ -85,12 +85,12 @@ $ more radar_apf.log
 ...
 ```
 
-Une fois que les deux fichiers de log sont générés,
-le notebook Python `plots.ipynb` permet de reproduire la Figure 2 pour visualiser les distributions obtenues pour `theta`.
+Une fois que les deux fichiers de log sont générés, le notebook Python `plots.ipynb` permet de reproduire la Figure 2 pour visualiser les distributions obtenues pour `theta`.
 
 ## Évaluation
 
-Les figures d'évaluation peuvent être re-générées en exécutant la commande `make bench` dans le dossier `probzelus/bench-apf`. Elles se trouveront alors dans le dossier `probzelus/bench-apf/plots`, au format PDF.
+Les figures d'évaluation peuvent être re-générées en exécutant la commande `make bench` dans le dossier `probzelus/bench-apf`. 
+Elles se trouveront alors dans le dossier `probzelus/bench-apf/plots`, au format PDF.
 
 ```
 $ cd probzelus/bench-apf
