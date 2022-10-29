@@ -1,6 +1,6 @@
 # Artefact JFLA 2023
 
-Cet artefact accompagne l'article **Filtrer sans s'appauvrir : inférer les paramètres constants de modèles réactifs probabilistes** soumis aux JFLA 2023.
+Cet artefact accompagne l'[article](https://github.com/rpl-lab/jfla23-apf/blob/main/jfla23-APF.pdf) **Filtrer sans s'appauvrir : inférer les paramètres constants de modèles réactifs probabilistes** soumis aux JFLA 2023, ainsi que son [annexe](https://github.com/rpl-lab/jfla23-apf/blob/main/jfla23-APF_annexe.pdf).
 
 _G. Baudart, G. Bussone, L. Mandel, C. Tasson_
 
